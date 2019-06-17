@@ -3,22 +3,18 @@ This a brief summary from the App Functions description. A very first edition of
 ## Models
 ### User:
 User session:
+
 1. Chipchat id (E.g. @e12345677)
 2. Database id
 3. User token (used for some actions, such as updating profile info and changing the info for the group you owned)
 4. Phone number -> SignIn
 5. Nickname: user defined name
-6. Chat group ids: Joined chat groups
-7. Host group ids ? 
-8. Chat history for a user ? (<message contains user id> or <user contains message id>) (MongoDB?)
-9. Blocked user ids
-10. Friends ids
-11. Stories (posts): all posts sent by user in all chat groups
-12. Notifications: (hard)
+6. Stories (posts): all posts sent by user in all chat groups
+7. Notifications: (hard)
     1. New friend requests
     2. Mentions
     3. New stories under the group you joined
-13. Information be shown in user profile page:
+8. Information be shown in user profile page:
     1. Private info: the info only visible for the account owner:
         1. Blocked user ids (No.8 above)
         2. Phone number (No.3 above)
@@ -34,29 +30,42 @@ User session:
 Things not mentioned in App Functions description:
 1. User joined date, timestamp
 
+### TopicMember
+1. User
+2. Topic
+
+### BlockedUser
+1. Owner (User)
+2. Blocked_user (User)
+
+### FriendShip
+1. Sender (User)
+2. Receiver (User)
+3. Accepted (boolean)
+
+### ChatGroup
+1. Type (Private or Community)
+2. Owner
+3. Users
 
 ### Topic（Category）(E.g. #music)
 1. Topic id
 2. Topic name
 3. Chat group ids belongs to this topic
  
-### Public chat group (the chat group under a topic).
-1. Chat group id -> sharable
+### TopicChat: Public chat group (the chat group under a topic).
+1. Topic Chat id -> sharable
     1. id, QR code
     2. Generate an invitation url
-2. Chat group topic (category E.g. #music)
-3. Description (changeable)
-4. Chat group name (changeable)
-5. Chat group image (image url)
-6. Chat group location (zip code) (optional)
-7. Topic id or topic name
-8. Host member id
-9. Member ids
-10. Stories (Posts) ids
-11. Messages (chats)
-
-### private chat group (2 ~ more people)
-Just a chat group, without topic
+2. ChatGroup ID
+3. Chat group topic (category E.g. #music)
+4. Description (changeable)
+5. Chat group name (changeable)
+6. Chat group image (image url)
+7. Chat group location (zip code) (optional)
+8. Topic id or topic name
+9. Stories (Posts) ids
+10. Messages (chats)
 
 ### Chat message                  
 1. Message id
@@ -74,6 +83,7 @@ Just a chat group, without topic
 5. Comments ids (Comments are also story?)
 6. Only two layers, if you wish to reply someone's comments, @mention the user in your comments.
 7. hit count
+8. Owner
 
 ## Log in
 1. Step 1: User input the phone number
